@@ -1,0 +1,3 @@
+[submodule "DexNews--FrontEnd"]
+	path = DexNews--FrontEnd
+	url = https://github.com/AlmasT10/DexNews--FrontEnd.git
