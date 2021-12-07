@@ -3,7 +3,7 @@ const app = express();
 // require("dotenv/config");
 // const api = process.env.API_URL;
 const morgan = require("morgan");
-// const mongoose = require("mongoose");
+const mongoose = require("mongoose");
 const cors = require("cors");
 // const authJwt = require("./helpers/jwt");
 // const errorHandler = require("./helpers/error-handler");
@@ -26,17 +26,17 @@ app.use("/news", newsRoutes);
 app.use("/comments", commentRoutes);
 app.use("/users", userRoutes);
 
-//Database Connection
-// mongoose
-//   .connect(
-//     "mongodb+srv://AlmasT10:Qwerty_0101@cluster0.oak3m.mongodb.net/projectmanager?retryWrites=true&w=majority"
-//   )
-//   .then(() => {
-//     console.log("MongoDb connection successful");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
+// Database Connection
+mongoose
+  .connect(
+    "mongodb+srv://AlmasT10:Qwerty_0101@cluster0.oak3m.mongodb.net/dexNews?retryWrites=true&w=majority"
+  )
+  .then(() => {
+    console.log("MongoDb connection successful");
+  })
+  .catch((err) => {
+    console.log(err);
+  });
 
 app.listen(3000, () => {
   console.log("Server is running at port:3000");
