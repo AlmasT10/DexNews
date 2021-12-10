@@ -1,20 +1,35 @@
 const express = require("express");
 const router = express.Router();
+const request = require("request");
+var axios = require("axios").default;
 
 const NewsAPI = require("newsapi");
 const newsapi = new NewsAPI("be209dfe2f554400a9e6e3e214fdc366");
 
-router.get("/", async (req, res) => {
-  var news = [];
-  newsapi.v2
-    .topHeadlines({
-      language: "en",
+function getData() {
+  var options = {
+    method: "GET",
+    url: "https://newscatcher.p.rapidapi.com/v1/latest_headlines",
+    params: { lang: "en", media: "True" },
+    headers: {
+      "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+      "x-rapidapi-key": "b979099e85msh69abeb0748e6ecdp138745jsnc1b325f53833",
+    },
+  };
+
+  axios
+    .request(options)
+    .then(function (response) {
+      return response.data;
     })
-    .then((response) => {
-      console.log(response);
-      news = response;
-      res.send(news);
+    .catch(function (error) {
+      console.error(error);
     });
+}
+
+router.get("/", async (req, res) => {
+  var news = getData();
+  res.send(news);
 });
 
 router.get("/sport", async (req, res) => {
