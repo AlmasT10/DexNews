@@ -116,6 +116,30 @@ router.get("/technology", async (req, res) => {
       res.send(news);
     });
 });
+router.get("/science", async (req, res) => {
+  var news = [];
+  newsapi.v2
+    .topHeadlines({
+      language: "en",
+      category: "science",
+    })
+    .then((response) => {
+      news = response;
+      res.send(news);
+    });
+});
+router.get("/politics", async (req, res) => {
+  var news = [];
+  newsapi.v2
+    .topHeadlines({
+      language: "en",
+      category: "politics",
+    })
+    .then((response) => {
+      news = response;
+      res.send(news);
+    });
+});
 router.get("/?search", async (req, res) => {
   const news = [];
   newsapi.v2

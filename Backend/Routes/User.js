@@ -82,10 +82,7 @@ router.post("/login", async (req, res) => {
     //     expiresIn: "1d",
     //   }
     // );
-    res.status(200).send({
-      user: user.email,
-      name: user.name,
-    });
+    res.status(200).send(user);
   } else {
     res.status(400).send("Wrong password");
   }

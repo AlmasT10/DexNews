@@ -21,10 +21,12 @@ app.use(morgan("tiny"));
 const commentRoutes = require("./routes/Comment");
 const newsRoutes = require("./routes/News");
 const userRoutes = require("./routes/User");
+const savedRoutes = require("./Routes/Saved");
 
 app.use("/news", newsRoutes);
 app.use("/comments", commentRoutes);
 app.use("/users", userRoutes);
+app.use("/saved", savedRoutes);
 
 // Database Connection
 mongoose
