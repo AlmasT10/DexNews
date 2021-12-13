@@ -2,13 +2,15 @@ const { Saved } = require("../Models/Saved");
 const express = require("express");
 const router = express.Router();
 
-router.get("/:id", async (req, res) => {
-  const savedList = await Saved.findById(req.params.id);
+router.get("/:user", async (req, res) => {
+  const savedList = await Saved.find({
+    user: req.params.user,
+  });
 
   if (!savedList) {
     res.status(500).json({ message: "The user with given id was not found" });
   }
-  res.status(200).send(savedList);
+  res.send(savedList);
 });
 
 router.post("/", async (req, res) => {
