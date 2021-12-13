@@ -4,33 +4,33 @@ const request = require("request");
 var axios = require("axios").default;
 
 const NewsAPI = require("newsapi");
-const newsapi = new NewsAPI("be209dfe2f554400a9e6e3e214fdc366");
+const newsapi = new NewsAPI("e16066e676bd40fd9853b4c46f2b9059");
 
-function getData() {
-  var options = {
-    method: "GET",
-    url: "https://newscatcher.p.rapidapi.com/v1/latest_headlines",
-    params: { lang: "en", media: "True" },
-    headers: {
-      "x-rapidapi-host": "newscatcher.p.rapidapi.com",
-      "x-rapidapi-key": "b979099e85msh69abeb0748e6ecdp138745jsnc1b325f53833",
-    },
-  };
+// function getData() {
+//   var options = {
+//     method: "GET",
+//     url: "https://newscatcher.p.rapidapi.com/v1/latest_headlines",
+//     params: { lang: "en", media: "True" },
+//     headers: {
+//       "x-rapidapi-host": "newscatcher.p.rapidapi.com",
+//       "x-rapidapi-key": "b979099e85msh69abeb0748e6ecdp138745jsnc1b325f53833",
+//     },
+//   };
 
-  axios
-    .request(options)
-    .then(function (response) {
-      return response.data;
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-}
+//   axios
+//     .request(options)
+//     .then(function (response) {
+//       return response.data;
+//     })
+//     .catch(function (error) {
+//       console.error(error);
+//     });
+// }
 
-router.get("/", async (req, res) => {
-  var news = getData();
-  res.send(news);
-});
+// router.get("/", async (req, res) => {
+//   var news = getData();
+//   res.send(news);
+// });
 
 router.get("/sport", async (req, res) => {
   var news = [];
